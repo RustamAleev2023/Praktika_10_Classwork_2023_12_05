@@ -1,9 +1,11 @@
 import java.util.Arrays;
 import java.util.Random;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        task1();
+//        task1();
+        task2();
     }
 
     //Task1
@@ -96,7 +98,6 @@ public class Main {
         Arrays.stream(arr3_4).distinct().toArray();
 
 
-
         System.out.println(Arrays.toString(arr1));
         System.out.println(Arrays.toString(arr2));
         System.out.println(Arrays.toString(arr3_4));
@@ -121,15 +122,54 @@ public class Main {
         System.out.println(Arrays.toString(arr3_5));
         System.out.println("===================================================");
     }
-    public static int min(int[] array){
+
+    public static int min(int[] array) {
         Arrays.sort(array);
         return array[0];
     }
-    public static int max(int[] array){
+
+    public static int max(int[] array) {
         Arrays.sort(array);
-        return array[array.length -1];
+        return array[array.length - 1];
     }
 
+    //Task2
+    public static void task2() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Введите кол-во сотрудников");
+        int size = scanner.nextInt();
+        int[] staff = new int[size];
+        for (int i = 0; i < staff.length; i++) {
+            System.out.println("Введите зарплату сотрудника " + (i + 1));
+            staff[i] = scanner.nextInt();
+        }
+        System.out.println("Выберите как отсортировать ЗП (вверх/вниз)");
+        String direction = scanner.next();
+
+        switch (direction) {
+            case "вверх" -> {
+                int temp;
+                for (int i = 1; i < staff.length; i++) {
+                    if (staff[i - 1] > staff[i]) {
+                        temp = staff[i - 1];
+                        staff[i - 1] = staff[i];
+                        staff[i] = temp;
+                    }
+                }
+            }
+            case "вниз" -> {
+                int temp;
+                for (int i = 1; i < staff.length; i++) {
+                    if (staff[i - 1] < staff[i]) {
+                        temp = staff[i - 1];
+                        staff[i - 1] = staff[i];
+                        staff[i] = temp;
+                    }
+                }
+            }
+        }
+        System.out.println(Arrays.toString(staff));
+    }
 
 
 }
