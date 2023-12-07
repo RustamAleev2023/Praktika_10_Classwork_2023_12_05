@@ -11,7 +11,8 @@ public class Main {
 //        task5();
 //        task6();
 //        task7();
-        task8();
+//        task8();
+        task9();
     }
 
     //Task1
@@ -407,8 +408,6 @@ public class Main {
         System.out.println("Произведение двух матриц");
         print(result);
 
-
-
     }
 
     public static void print(int[][] arr) {
@@ -419,6 +418,22 @@ public class Main {
             System.out.println();
         }
         System.out.println();
+    }
+
+    //Task9
+    public static void task9() {
+        int[][] arr = new int[5][5];
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Введите число");
+        int num = scanner.nextInt();
+        int temp;
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr[i].length; j++) {
+
+            }
+        }
+
     }
 
 
