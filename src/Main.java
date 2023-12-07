@@ -5,7 +5,8 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 //        task1();
-        task2();
+//        task2();
+        task3();
     }
 
     //Task1
@@ -169,6 +170,68 @@ public class Main {
             }
         }
         System.out.println(Arrays.toString(staff));
+    }
+
+    //Task3
+    public static void task3() {
+        Random random = new Random();
+        int[] arr = new int[15];
+
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = random.nextInt(20);
+        }
+        System.out.println(Arrays.toString(arr));
+        //разбиваем на две части
+        int[] arr1 = Arrays.copyOf(arr, arr.length / 2);
+        int[] arr2 = Arrays.copyOfRange(arr, arr.length / 2, arr.length);
+//        System.out.println(Arrays.toString(arr1));
+//        System.out.println(Arrays.toString(arr2));
+
+
+
+        //сортируем по возрастанию
+        sort(arr1);
+//        System.out.println(Arrays.toString(arr1));
+
+        //сортируем по убыванию
+       sort(arr2); //сортируем по возрастанию
+        for (int i = 0; i < arr2.length / 2; i++) { //реверс
+            int temp = arr2[i];
+            arr2[i] = arr2[arr2.length - 1 - i];
+            arr2[arr2.length - 1 - i] = temp;
+        }
+//        System.out.println(Arrays.toString(arr2));
+
+        //соединяем два массива в один
+        for (int i = 0; i < arr.length; i++) {
+            if(i >=0 && i < arr.length/2){
+                arr[i] = arr1[i];
+            }
+            if(i >= arr.length/2 && i < arr.length){
+                arr[i] = arr2[i - arr.length/2];
+            }
+
+        }
+        System.out.println(Arrays.toString(arr));
+
+
+    }
+    public static int[] sort(int[] arr){
+        boolean isSorted = false;
+        int temp;
+
+        while(!isSorted) {
+            isSorted = true;
+            for (int i = 0; i < arr.length-1; i++) {
+                if(arr[i] > arr[i+1]){
+                    isSorted = false;
+                    temp = arr[i];
+                    arr[i] = arr[i+1];
+                    arr[i+1] = temp;
+                }
+            }
+        }
+        return arr;
     }
 
 
