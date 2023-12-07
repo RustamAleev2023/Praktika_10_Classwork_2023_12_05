@@ -9,7 +9,8 @@ public class Main {
 //        task3();
 //        task4();
 //        task5();
-        task6();
+//        task6();
+        task7();
     }
 
     //Task1
@@ -328,6 +329,37 @@ public class Main {
             int[] temp = Arrays.copyOf(numbers[i], numbers.length);
             Arrays.sort(temp);
             System.out.println("Строка " + i + ": min = " + temp[0] + ", max = " + temp[temp.length - 1]);
+        }
+    }
+
+    //Task7
+    public static void task7() {
+        int[][] numbers = new int[5][5];
+        int min;
+        int max;
+        Random random = new Random();
+
+        for (int i = 0; i < numbers.length; i++) {
+            for (int j = 0; j < numbers[i].length; j++) {
+                numbers[i][j] = random.nextInt(100);
+                System.out.print(numbers[i][j] + "\t");
+            }
+            System.out.println();
+        }
+        System.out.println();
+
+        int[][] temp = new int[numbers.length][numbers.length];
+
+        for (int i = 0; i < numbers.length; i++) {
+            for (int j = 0; j < numbers[i].length; j++) {
+                temp[i][j] = numbers[j][i];
+            }
+        }
+
+        for (int i = 0; i < numbers.length; i++) {
+            int[] arr = Arrays.copyOf(temp[i], temp.length);
+            Arrays.sort(arr);
+            System.out.println("В столбце " + i + ": min = " + arr[0] + ", max = " + arr[arr.length - 1]);
         }
     }
 
