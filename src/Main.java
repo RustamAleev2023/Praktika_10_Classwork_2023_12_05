@@ -6,7 +6,8 @@ public class Main {
     public static void main(String[] args) {
 //        task1();
 //        task2();
-        task3();
+//        task3();
+        task4();
     }
 
     //Task1
@@ -187,14 +188,12 @@ public class Main {
 //        System.out.println(Arrays.toString(arr1));
 //        System.out.println(Arrays.toString(arr2));
 
-
-
         //сортируем по возрастанию
         sort(arr1);
 //        System.out.println(Arrays.toString(arr1));
 
         //сортируем по убыванию
-       sort(arr2); //сортируем по возрастанию
+        sort(arr2); //сортируем по возрастанию
         for (int i = 0; i < arr2.length / 2; i++) { //реверс
             int temp = arr2[i];
             arr2[i] = arr2[arr2.length - 1 - i];
@@ -204,34 +203,81 @@ public class Main {
 
         //соединяем два массива в один
         for (int i = 0; i < arr.length; i++) {
-            if(i >=0 && i < arr.length/2){
+            if (i >= 0 && i < arr.length / 2) {
                 arr[i] = arr1[i];
             }
-            if(i >= arr.length/2 && i < arr.length){
-                arr[i] = arr2[i - arr.length/2];
+            if (i >= arr.length / 2 && i < arr.length) {
+                arr[i] = arr2[i - arr.length / 2];
             }
-
         }
         System.out.println(Arrays.toString(arr));
-
-
     }
-    public static int[] sort(int[] arr){
+
+    public static int[] sort(int[] arr) {
         boolean isSorted = false;
         int temp;
 
-        while(!isSorted) {
+        while (!isSorted) {
             isSorted = true;
-            for (int i = 0; i < arr.length-1; i++) {
-                if(arr[i] > arr[i+1]){
+            for (int i = 0; i < arr.length - 1; i++) {
+                if (arr[i] > arr[i + 1]) {
                     isSorted = false;
                     temp = arr[i];
-                    arr[i] = arr[i+1];
-                    arr[i+1] = temp;
+                    arr[i] = arr[i + 1];
+                    arr[i + 1] = temp;
                 }
             }
         }
         return arr;
+    }
+
+    //Task4
+    public static void task4() {
+        Random random = new Random();
+        int[] arr = new int[10];
+
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = random.nextInt(100);
+        }
+
+        System.out.println(Arrays.toString(arr));
+
+        int[] temp = Arrays.copyOf(arr, arr.length);
+        Arrays.sort(temp);
+//        System.out.println(Arrays.toString(temp));
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Введите число для поиска (0 - 100)");
+        int n = scanner.nextInt();
+
+        int index = Integer.MAX_VALUE;
+
+        int low = 0;
+        int high = temp.length - 1;
+
+        while (low <= high) {
+            int mid = low + ((high - low) / 2);
+            if (temp[mid] < n) {
+                low = mid + 1;
+            } else if (temp[mid] > n) {
+                high = mid - 1;
+            } else if (temp[mid] == n) {
+                index = mid;
+                break;
+            }
+        }
+
+        if(index == Integer.MAX_VALUE ){
+            System.out.println("Такого числа нет в массиве");
+        } else {
+            for (int i = 0; i < arr.length; i++) {
+                if (arr[i] == temp[index]) {
+                    System.out.println("Искомое число:  " + arr[i]);
+                    break;
+                }
+            }
+        }
+
     }
 
 
