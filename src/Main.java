@@ -7,7 +7,8 @@ public class Main {
 //        task1();
 //        task2();
 //        task3();
-        task4();
+//        task4();
+        task5();
     }
 
     //Task1
@@ -277,8 +278,34 @@ public class Main {
                 }
             }
         }
-
     }
+
+    //Task5
+    public static void task5(){
+        int[][] numbers = new int[3][3];
+        Scanner scanner = new Scanner(System.in);
+        int sum = 0;
+        for (int i = 0; i < numbers.length; i++) {
+            for (int j = 0; j < numbers[i].length; j++) {
+                System.out.println("Введите элемент массива");
+                numbers[i][j] = scanner.nextInt();
+                sum += numbers[i][j];
+            }
+        }
+
+        System.out.println("Сумма элементов массива = " + sum);
+        System.out.println("Среднее арифметическое = " + sum / (3 * 3));
+        System.out.println();
+
+
+        for (int i = 0; i < numbers.length; i++) {
+            for (int j = 0; j < numbers[i].length; j++) {
+
+                System.out.print(numbers[i][j] + "\t");
+            }
+            System.out.println();
+        }
+     }
 
 
 }
