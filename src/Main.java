@@ -10,7 +10,8 @@ public class Main {
 //        task4();
 //        task5();
 //        task6();
-        task7();
+//        task7();
+        task8();
     }
 
     //Task1
@@ -270,7 +271,7 @@ public class Main {
             }
         }
 
-        if(index == Integer.MAX_VALUE ){
+        if (index == Integer.MAX_VALUE) {
             System.out.println("Такого числа нет в массиве");
         } else {
             for (int i = 0; i < arr.length; i++) {
@@ -283,7 +284,7 @@ public class Main {
     }
 
     //Task5
-    public static void task5(){
+    public static void task5() {
         int[][] numbers = new int[3][3];
         Scanner scanner = new Scanner(System.in);
         int sum = 0;
@@ -307,10 +308,10 @@ public class Main {
             }
             System.out.println();
         }
-     }
+    }
 
-     //Task6
-    public static void task6(){
+    //Task6
+    public static void task6() {
         int[][] numbers = new int[5][5];
         int min;
         int max;
@@ -361,6 +362,63 @@ public class Main {
             Arrays.sort(arr);
             System.out.println("В столбце " + i + ": min = " + arr[0] + ", max = " + arr[arr.length - 1]);
         }
+    }
+
+    //Task8
+    public static void task8() {
+        int[][] num1 = new int[2][2];
+        int[][] num2 = new int[2][2];
+        int[][] result = new int[2][2];
+
+        Random random = new Random();
+
+        for (int i = 0; i < num1.length; i++) {
+            for (int j = 0; j < num1[i].length; j++) {
+                num1[i][j] = random.nextInt(100);
+                num2[i][j] = random.nextInt(100);
+            }
+        }
+        System.out.println("Num1:");
+        print(num1);
+        System.out.println("Num2:");
+        print(num2);
+
+        for (int i = 0; i < num1.length; i++) {
+            for (int j = 0; j < num1[i].length; j++) {
+                result[i][j] = num1[i][j] + num2[i][j];
+            }
+        }
+        System.out.println("Сумма двух матриц");
+        print(result);
+
+        for (int i = 0; i < num1.length; i++) {
+            for (int j = 0; j < num1[i].length; j++) {
+                result[i][j] = num1[i][j] - num2[i][j];
+            }
+        }
+        System.out.println("Разность двух матриц");
+        print(result);
+
+        for (int i = 0; i < num1.length; i++) {
+            for (int j = 0; j < num1[i].length; j++) {
+                result[i][j] = num1[i][j] * num2[i][j];
+            }
+        }
+        System.out.println("Произведение двух матриц");
+        print(result);
+
+
+
+    }
+
+    public static void print(int[][] arr) {
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr[i].length; j++) {
+                System.out.print(arr[i][j] + "\t");
+            }
+            System.out.println();
+        }
+        System.out.println();
     }
 
 
