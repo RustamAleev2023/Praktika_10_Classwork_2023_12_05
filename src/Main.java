@@ -8,7 +8,8 @@ public class Main {
 //        task2();
 //        task3();
 //        task4();
-        task5();
+//        task5();
+        task6();
     }
 
     //Task1
@@ -306,6 +307,29 @@ public class Main {
             System.out.println();
         }
      }
+
+     //Task6
+    public static void task6(){
+        int[][] numbers = new int[5][5];
+        int min;
+        int max;
+        Random random = new Random();
+
+        for (int i = 0; i < numbers.length; i++) {
+            for (int j = 0; j < numbers[i].length; j++) {
+                numbers[i][j] = random.nextInt(100);
+                System.out.print(numbers[i][j] + "\t");
+            }
+            System.out.println();
+        }
+        System.out.println();
+
+        for (int i = 0; i < numbers.length; i++) {
+            int[] temp = Arrays.copyOf(numbers[i], numbers.length);
+            Arrays.sort(temp);
+            System.out.println("Строка " + i + ": min = " + temp[0] + ", max = " + temp[temp.length - 1]);
+        }
+    }
 
 
 }
